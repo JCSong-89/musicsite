@@ -1,22 +1,22 @@
 import Sequelize from 'sequelize';
 
-import {DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USERNAME} from '../config/index';
+import {DB_ENV} from '../config/index';
 import User from '../models/User';
 import Music from '../models/Music';
 
 const db = {};
 const sequelize = new Sequelize(
-  DB_DATABASE,
-  DB_USERNAME,
-  DB_PASSWORD,
+  DB_ENV.DB_NAME,
+  DB_ENV.DB_USER,
+  DB_ENV.DB_PASSWORD,
   {
-    host: DB_HOST,
+    host: DB_ENV.DB_HOST,
     username: 'root',
-    password: DB_PASSWORD,
-    database: DB_DATABASE,
+    password: DB_ENV.DB_PASSWORD,
+    database: DB_ENV.DB_NAME,
     dialect: 'mysql',
-    port: 3306,
-    //ssl: 'Amazon RDS',
+    port: DB_ENV.DB_PORT,
+    ssl: 'Amazon RDS',
     logging: console.log,
     timezone: '+09:00', // 한국 시간 셋팅
   },

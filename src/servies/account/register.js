@@ -2,20 +2,19 @@ import bcrypt from 'bcrypt';
 import findOneUser from '../../DAO/findOneUser';
 import createUser from '../../DAO/createUser';
 
-export default async (req, res, next) => {
+export default async (req, res) => {
   try{
     const user = await findOneUser(req.body);
-    const salt = 10;
 
     if (user) return res.status(400).send({message: 'UNUSABLE VALUE '})
 
-    const hash = await bcrypt.hash(req.body.password, salt);
+    const hash = await bcrypt.hash(req.body.password, 10);
     const result = createUser(req.body, hash);
 
-    if (result === 'Fail') return res.status(500).send('Fail');
+    if (result === 'Fail') return res.status(500).send({message: 'FAIL CREATE USER'});
     
-    return res.status(201).send('Success')    
+    return res.status(201).send({message: 'SUCCESS'});    
   } catch(err) {
-    next(err.message);
+    return res.status(400).send({message: 'FAIL REGISTER'});
   }
 };

@@ -1,12 +1,12 @@
 import db from '../loader/dbconnet';
 
-const updateUser = (req) => {
+const updateUser = (req, username, hash) => {
   try {
-    return db.User.update({
+    db.User.update({
       name: req.name,
-      password: req.password
+      password: hash
     },{
-      where: {id: req.id}
+      where: {username}
     });
   } catch (err) {
     throw err;

@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 export const PORT = process.env.PORT || 5000;
-export const mongodbUrl = process.env.DATABASE_URI;
 export const DB_ENV = {
     DB_NAME: process.env.DB_NAME,
     DB_USER: process.env.DB_USER,
@@ -14,3 +13,4 @@ export const DB_ENV = {
 export const SECRET_KEY = process.env.JWT_SECRET_KEY;
 export const AWS_KEY = process.env.AWS_KEY;
 export const AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+export const SALT = process.env.SALT;  

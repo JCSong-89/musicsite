@@ -2,8 +2,9 @@ import db from '../loader/dbconnet';
 
 const createUser = (req, hash) => {
   try {
-    db.Admin.create({
-      email: req.email,
+    db.User.create({
+      username: req.username,
+      name: req.name,
       password: hash,
     });
     return 'Success';
