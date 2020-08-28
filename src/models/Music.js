@@ -1,0 +1,31 @@
+export default (sequelize, DataTypes) => {
+  const Music = sequelize.define(
+    'Music',
+    {
+      path: {
+        type: DataTypes.STRING(1000),
+        allowNull: false,
+      },
+      artist: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      },
+      album: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      },
+      name: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      }
+    },
+    {
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_general_ci',
+    },
+  );
+  Music.associate = (db) => {
+    db.Music.belongsTo(db.User);
+  };
+  return Music;
+};
