@@ -1,9 +1,9 @@
 import login from './account/login';
 import register from './account/register';
 import profile from './account/updateProfile'
-import music from './music/searchMusic';
-import uploading from './music/updateMusic';
-import updateMusic from './music/updateMusic';
+import music from './music/music';
+import uploading from './music/uploadMusic';
+import searchMusic from './music/searchMusic';
 
 export default (App) => {
   const router = App;
@@ -13,5 +13,5 @@ export default (App) => {
   router.use('/profile', profile);
   router.use('/music', music);
   router.use('/uploading', uploading);
-  router.use('/music-info', updateMusic);
+  router.use('/search', searchMusic);
 };

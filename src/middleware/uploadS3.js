@@ -6,15 +6,17 @@ import {AWS_KEY, AWS_SECRET_KEY} from '../config/index';
 
 const s3 = new aws.S3({
   accessKeyId: AWS_KEY,
-  secretAccessKey: AWS_SECRET_KEY
+  secretAccessKey: AWS_SECRET_KEY,
+  Bucket: 'sjcmusic'
 });
 
-const multerMusic = multer({
+export const multerMusic = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: "sjcmusic/music"
+    bucket: "sjcmusic/music",
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.mimetype });
+  }
   })
 })
-
-export const uploadeFile = multerMusic.single("music");

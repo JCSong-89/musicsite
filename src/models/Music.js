@@ -17,7 +17,15 @@ export default (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING(300),
         allowNull: false,
-      }
+      },
+      size: {
+        type: DataTypes.INTEGER(),
+        allowNull: false,
+      },
+      file: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      },
     },
     {
       charset: 'utf8mb4',

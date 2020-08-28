@@ -4,7 +4,7 @@ import detailMusic from '../../servies/music/detailMusic';
 
 const router = Router();
 
-router.post('/', updateMusic);
-router.get('/', detailMusic);
+router.post('/:musicId', updateMusic);
+router.get('/:musicId', detailMusic);
 
 export default router;

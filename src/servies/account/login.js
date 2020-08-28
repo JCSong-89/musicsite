@@ -9,7 +9,10 @@ export default async (req, res) => {
     if (!user) return res.status(403).send({message: 'USER NOT FOUND'});
   
     const result = await bcrypt.compare(req.body.password, user.password);
-    const userInfo = { username: user.username }
+    const userInfo = {
+      id: user.id, 
+      username: user.username,
+     }
     if (result === true) {
       const token = jwt.sign(userInfo, SECRET_KEY);
       return res.status(200).send({Authentication: token});
