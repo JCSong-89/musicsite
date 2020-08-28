@@ -7,7 +7,7 @@ export default async (req, res, next) => {
 
     if (result == false) return res.status(401).send({message: 'UNSERVICEABLE TOKEN'})
     
-    const user = await findOneUser(result.user.id);
+    const user = await findOneUser(result.user);
     return res.status(200).send(user);
   } catch (err) {
     next(err.message)
