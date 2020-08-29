@@ -1,11 +1,9 @@
 import db from '../loader/dbconnet';
 
-const findOneUser = (req) => {
+export default (data) => {
   try {
-    return db.User.findOne({where: {username: req.username}});
+    return db.User.findOne({where: {username: data.username}});
   } catch (err) {
     throw err;
   }
 };
-
-export default findOneUser;

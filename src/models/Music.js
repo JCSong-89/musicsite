@@ -26,6 +26,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING(300),
         allowNull: false,
       },
+      username: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      },
     },
     {
       charset: 'utf8mb4',

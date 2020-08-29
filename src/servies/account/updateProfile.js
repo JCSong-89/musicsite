@@ -7,7 +7,7 @@ export default async (req, res) => {
   try {
     const result = checkJWT(req.headers);
 
-    if (result == false) return res.status(401).send({message: 'UNSERVICEABLE TOKEN'});
+    if (result === false) return res.status(401).send({message: 'UNSERVICEABLE TOKEN'});
     
     const hash = await bcrypt.hash(req.body.password, 10);
 

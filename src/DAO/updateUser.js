@@ -1,16 +1,15 @@
 import db from '../loader/dbconnet';
 
-const updateUser = (req, username, hash) => {
+export default (data, username, hash) => {
   try {
     db.User.update({
-      name: req.name,
+      name: data.name,
       password: hash
     },{
       where: {username}
     });
+    return true
   } catch (err) {
-    throw err;
+    return false
   }
 };
-
-export default updateUser;

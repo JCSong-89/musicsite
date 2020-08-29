@@ -1,16 +1,16 @@
 import db from '../loader/dbconnet';
 
-const createUser = (req, hash) => {
+export default (data, hash) => {
   try {
+    const {username, name} = data;
     db.User.create({
-      username: req.username,
-      name: req.name,
+      username,
+      name,
       password: hash,
     });
-    return 'Success';
+    return true;
   } catch (err) {
-    return 'Fail';
+    console.error(err.message)
+    return false;
   }
 };
-
-export default createUser;

@@ -1,6 +1,6 @@
 import db from '../loader/dbconnet';
 
-const createMusic = (data) => {
+export default (data) => {
   try {
     const {username, name, album, userId, size, artist, path, file} = data
     db.Music.create({
@@ -13,10 +13,9 @@ const createMusic = (data) => {
       file,
       userId      
     });
-    return 'Success';
+    return true;
   } catch (err) {
-    return 'Fail';
+    console.error(err.message)
+    return false;
   }
 };
-
-export default createMusic;

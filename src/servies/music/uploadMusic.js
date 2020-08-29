@@ -8,11 +8,11 @@ export default async (req, res) => {
     path: req.file.location,
     size: req.file.size,
     file: req.file.key,
-    userId: req.userId,
-    username: req.username
+    userId: req.params.userId,
+    username: req.params.username
   }
   const result = createMusic(data);
-  if (result === 'Fail') return res.status(400).send({message: 'FAIL SAVE NEW FILE'})
+  if (result === false) return res.status(400).send({message: 'FAIL SAVE NEW FILE'})
 
   return res.status(200).send({message: 'SAVE NEW FILE'});
 }

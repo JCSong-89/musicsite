@@ -11,7 +11,7 @@ export default async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10);
     const result = createUser(req.body, hash);
 
-    if (result === 'Fail') return res.status(500).send({message: 'FAIL CREATE USER'});
+    if (result === false) return res.status(500).send({message: 'FAIL CREATE USER'});
     
     return res.status(201).send({message: 'SUCCESS'});    
   } catch(err) {
