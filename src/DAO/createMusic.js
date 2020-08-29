@@ -2,7 +2,7 @@ import db from '../loader/dbconnet';
 
 export default (data) => {
   try {
-    const {username, name, album, userId, size, artist, path, file} = data
+    const { username, name, album, userId, size, artist, path, file } = data
     db.Music.create({
       username,
       name,
@@ -13,9 +13,11 @@ export default (data) => {
       file,
       userId      
     });
-    return true;
+
+    return true;    
   } catch (err) {
     console.error(err.message)
+
     return false;
-  }
-};
+  };
+}

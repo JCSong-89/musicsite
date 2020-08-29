@@ -10,7 +10,7 @@ export default (query) => {
           }
         }
       });
-    } catch (err) {
+    } catch (err) {      
     throw err;
   }
 };

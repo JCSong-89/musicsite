@@ -1,31 +1,38 @@
-import findOneMusic from '../../DAO/findOneMusic';
 import checkJWT from '../../middleware/checkJWT';
+import findOneMusic from '../../DAO/findOneMusic';
 
 export default async (req, res) => {
   try {
+    const { id } = req.body
+    if (!id) {
+      return res.status(400).send({ message: "NEED USER ID" })
+    }
+
     const result = checkJWT(req.headers);
 
-    if (result == false) return res.status(401).send({message: 'UNSERVICEABLE TOKEN'});    
-
+    if (result == false) {
+      return res.status(401).send({ message: 'UNSERVICEABLE TOKEN' });    
+    }
     // Update Music before Check User Accecs
-    if (req.body.id) {
-      const {id} = req.body
+    if (id) {
       const data = {
         username: result.username,
         userId: result.userId
       }
       const music = await findOneMusic(id, data);
+
       return res.status(200).send(music);
     };
-
     // Create Music before Check User Accecs
     const data = {
       userId: result.id,
       username: result.username,
     };
+
     return res.status(200).send(data);
   } catch (err) {
     console.error(err.message);
-    return res.status(400).send({message: "ERROR"});
+
+    return res.status(400).send({ message: "ERROR" });
   }
 };

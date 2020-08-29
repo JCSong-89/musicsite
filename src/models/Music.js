@@ -39,5 +39,6 @@ export default (sequelize, DataTypes) => {
   Music.associate = (db) => {
     db.Music.belongsTo(db.User);
   };
+  
   return Music;
 };

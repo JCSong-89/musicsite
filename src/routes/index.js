@@ -1,10 +1,10 @@
-import login from './account/login';
-import register from './account/register';
-import profile from './account/updateProfile'
-import updateMusic from './music/updateMusic';
 import readMusic from '../routes/music/readMusic'
-import uploading from './music/uploadMusic';
+import register from './account/register';
+import login from './account/login';
+import profile from './account/updateProfile'
 import searchMusic from './music/searchMusic';
+import updateMusic from './music/updateMusic';
+import uploading from './music/uploadMusic';
 
 export default (App) => {
   const router = App;

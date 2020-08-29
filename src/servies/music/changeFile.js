@@ -1,15 +1,23 @@
 import updateFile from '../../DAO/updateFile';
 
-export default async (req, res) => {
+export default (req, res) => {
+  const { location, size, key } = req.file
+
+  if (!location || !size || !key) {
+    return res.status(400).send({ message: "FAIL UPLOAD S3" });
+  }
+
   const data = {
     id: req.params.musicId,
-    path: req.file.location,
-    size: req.file.size,
-    file: req.file.key,
+    path: location,
+    size: size,
+    file: key,
   }
   const result = updateFile(data);
 
-  if (result === false) return res.status(400).send({message: 'FAIL SAVE NEW FILE'})
+  if (result === false) {
+    return res.status(400).send({ message: 'FAIL SAVE NEW FILE' })
+  }
 
   return res.status(200).send(data);
 }

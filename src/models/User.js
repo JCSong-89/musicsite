@@ -24,5 +24,6 @@ export default (sequelize, DataTypes) => {
   User.associate = (db) => {
     db.User.hasMany(db.Music);
   };
+  
   return User;
 };

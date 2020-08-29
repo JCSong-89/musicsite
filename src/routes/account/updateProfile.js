@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import updateProfile from '../../servies/account/updateProfile';
+
 import readProfile from '../../servies/account/readProfile';
+import updateProfile from '../../servies/account/updateProfile';
 
 const router = Router();
 

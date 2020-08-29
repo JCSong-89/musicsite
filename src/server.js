@@ -1,7 +1,8 @@
-import {PORT} from './config/index';
 import http from 'http';
-import db from './loader/dbconnet';
+
 import App from './loader/app';
+import db from './loader/dbconnet';
+import {PORT} from './config/index';
 
 const serverHandler = () => {
   console.log('서버 가동 ON PORT: ', PORT);

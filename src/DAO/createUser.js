@@ -2,15 +2,17 @@ import db from '../loader/dbconnet';
 
 export default (data, hash) => {
   try {
-    const {username, name} = data;
+    const { username, name } = data;
     db.User.create({
       username,
       name,
       password: hash,
     });
-    return true;
+
+    return true;    
   } catch (err) {
     console.error(err.message)
+
     return false;
   }
 };

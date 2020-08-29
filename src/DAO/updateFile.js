@@ -2,17 +2,17 @@ import db from '../loader/dbconnet';
 
 export default (data) => {
   try{
-    const {id, path, file, size} = data
-    console.log(data)
+    const { id, path, file, size } = data
     db.Music.update({
       size,
       path,
       file,
     },{
-      where: {id}
+      where: { id }
     });
+
     return true
-} catch(err) {
+  } catch (err) {
     return false
   }
 }
