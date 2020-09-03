@@ -6,6 +6,16 @@ export default (id, ...ars) => {
     if (ars) {
       const { username } = ars[0];
       return db.Music.findOne({
+        attributes: [
+          "id",
+          "username",
+          "name",
+          "size",
+          "file",
+          "album",
+          "artist",
+          "createdAt",
+        ],
         where: {
           id,
           username,
@@ -20,7 +30,6 @@ export default (id, ...ars) => {
         "name",
         "size",
         "file",
-        "path",
         "album",
         "artist",
         "createdAt",
