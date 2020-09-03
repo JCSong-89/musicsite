@@ -12,7 +12,7 @@ export default async (req, res) => {
 
   const auth = checkJWT(req.headers);
 
-  if (result === false) {
+  if (auth === false) {
     return res.status(401).send({ message: "UNSERVICEABLE TOKEN" });
   }
 
