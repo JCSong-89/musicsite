@@ -1,33 +1,36 @@
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
-import checkJWT from '../../middleware/checkJWT';
-import updatePassword from '../../DAO/updateUserPassword';
-import updateUser from '../../DAO/updateUser';
+import checkJWT from "../../middleware/checkJWT";
+import updatePassword from "../../DAO/updateUserPassword";
+import updateUser from "../../DAO/updateUser";
 
 export default async (req, res) => {
   try {
-    const { password, name } = req.body
+    const { password, name } = req.body;
 
     if (!name && !password) {
-      return res.status(400).send({ message: "NEED USER INFO" })
+      return res.status(400).send({ message: "NEED USER INFO" });
     }
 
     const result = checkJWT(req.headers);
 
     if (result === false) {
-      return res.status(401).send({ message: 'UNSERVICEABLE TOKEN' });
+      return res.status(401).send({ message: "UNSERVICEABLE TOKEN" });
     }
 
-    if (password) {
+    if (password === false) {
       const hash = await bcrypt.hash(password, 10);
+
       updatePassword(name, result.username, hash);
 
-      return res.status(200).send({ message: "UPDATED PROFILE" });
+      return res
+        .status(200)
+        .send({ message: "UPDATED PROFILE PASSWORD AND NAME" });
     }
 
     updateUser(name, result.username);
 
-    return res.status(200).send({ message: "UPDATED PROFILE" });
+    return res.status(200).send({ message: "UPDATED PROFILE NAME" });
   } catch (err) {
     return res.status(400).send({ message: "FAIL UPDATE PROFILE" });
   }
