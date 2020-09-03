@@ -2,8 +2,10 @@ import db from "../loader/dbconnet";
 
 export default (id, ...ars) => {
   try {
+    console.log(id);
     // For Update Music Data
     if (ars) {
+      console.log[ars[0]];
       const { username } = ars[0];
       return db.Music.findOne({
         attributes: [
