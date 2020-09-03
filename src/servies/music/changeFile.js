@@ -23,6 +23,7 @@ export default async (req, res) => {
     size: size,
     file: key,
   };
+
   const music = await findOneMusic(data.id, user);
 
   if (!music) {
